@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "rafa gb",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 67.02,
+      "left": 33.37,
+      "attrs": { "env": "micropython-20231227-v1.22.0", "flashSize": "8" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 246, "left": 243.8, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 198, "left": -82.6, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 301.55,
+      "left": 153.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 291.95,
+      "left": -67.2,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -24.8, "left": 146.22, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "led2:C", "r2:1", "white", [ "v0" ] ],
+    [ "r2:2", "esp:GND.1", "white", [ "v0" ] ],
+    [ "led2:A", "esp:13", "blue", [ "v38.4", "h67.2", "v19.2" ] ],
+    [ "led1:A", "esp:19", "red", [ "v0" ] ],
+    [ "pir1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "pir1:OUT", "esp:14", "violet", [ "v0" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "r1:1", "led1:C", "gray", [ "v0" ] ],
+    [ "r1:2", "esp:GND.1", "green", [ "v0" ] ],
+    [ "led1:A", "esp:12", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
